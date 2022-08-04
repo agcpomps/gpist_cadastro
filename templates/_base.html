@@ -1,0 +1,32 @@
+{% load compress %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Gpist Base de Dados | Centralidades{% endblock title %}</title>
+    {% compress css%}
+    <link rel="stylesheet" href="{% static 'src/output.css' %}" />
+    {% endcompress %}
+  </head>
+  <body class="bg-green-50">
+    <div class="container mx-auto mt-4">
+      <nav>
+        <h1>GPIST</h1>
+        {% if user.is_authenticated %}
+          <p>Hi {{ user.username }}</p>
+          <p><a href="{% url 'logout' %}"></a></p>
+        {% else %}
+           <p>You are not logged in</p>
+           <a href="{% url 'login' %}">Entre</a>
+           <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+      </nav>
+      {% block content %}
+      {% endblock content %}
+    </div>
+  </body>
+</html>
