@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     #third parties
     "compressor",
+    'widget_tweaks',
     # Local
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig", 
+    "baia_farta.apps.BaiaFartaConfig",
 ]
 
 MIDDLEWARE = [
@@ -127,4 +129,7 @@ LOGOUT_REDIRECT_URL = "home"
 #compressor config
 COMPRESS_ROOT = BASE_DIR / 'static'
 COMPRESS_ENABLED = True
-STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',)

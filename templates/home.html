@@ -1,5 +1,15 @@
 {% extends '_base.html' %}
+{% load static %}
 
 {% block content %}
-  <h1 class="text-3xl text-green-800">Gpist databases</h1>
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <img src="{% static 'images/maintenance.svg' %}" class="max-w-sm rounded-lg" />
+    <div>
+      <h1 class="text-5xl font-bold">GPIST Base de Dados</h1>
+      <p class="py-6">Sistema integrado e Base de dados dos projectos Habitacionais da Provincia de Benguela</p>
+      <a role="button" class="btn btn-primary">Cadastrar</a>
+    </div>
+  </div>
+</div> 
 {% endblock content %}

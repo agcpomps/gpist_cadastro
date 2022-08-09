@@ -8,6 +8,7 @@ authors = ["agcpomps <agcpomps@gmail.com>"]
 python = "^3.10"
 Django = "^4.1"
 django-compressor = "^4.0"
+django-widget-tweaks = "^1.4.12"
 
 [tool.poetry.dev-dependencies]
 

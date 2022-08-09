@@ -1,0 +1,63 @@
+{% extends '_base.html'%}
+{% load widget_tweaks %}
+
+{% block title %}Preencher a Habitação{% endblock title %}
+
+
+{% block content %}
+  <h1>Preenche os campos para o cadastramento da Habitacao</h1>
+     <div class="flex justify-center items-center h-screen mx-auto">
+        <div class="mt-5 md:mt-0 md:col-span-2 bg-white">
+          <form method="post">
+            {% csrf_token %}
+            <div class="shadow overflow-hidden sm:rounded-md">
+              <div class="px-4 py-5 bg-white sm:p-6">
+                <div class="grid grid-cols-6 gap-6">
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="id_urbazizacao" class="block text-sm font-medium text-gray-700">Urbanização</label>
+                    {{ form.urbanizacao|add_class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" }}
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="id_rua" class="block text-sm font-medium text-gray-700">Rua</label>
+                    {{ form.rua|add_class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" }}
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="id_bloco" class="block text-sm font-medium text-gray-700">Bloco</label>
+                    {{ form.bloco|add_class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" }}
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="id_entrada" class="block text-sm font-medium text-gray-700">Entrada</label>
+                    {{ form.entrada|add_class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" }}
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                    <label for="id_predio" class="block text-sm font-medium text-gray-700">Prédio</label>
+                    {{ form.predio|add_class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" }}
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                    <label for="id_andar" class="block text-sm font-medium text-gray-700">Andar</label>
+                    {{ form.andar|add_class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" }}
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                    <label for="id_numero" class="block text-sm font-medium text-gray-700">Numero</label>
+                    {{ form.numero|add_class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" }}
+                  </div>
+                </div>
+              </div>
+             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+              <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Guardar</button>
+            </div>
+            </div>
+          </form>
+        </div>
+
+     </div> 
+              
+
+      
+{% endblock content %}

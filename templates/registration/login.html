@@ -1,12 +1,30 @@
 {% extends '_base.html' %}
+{% load widget_tweaks %}
 
 {% block title %}Log In{% endblock title %}
 
 {% block content %}
-  <h2>Login</h2>
-  <form method="post">
+  <div class="flex justify-center items-center h-screen">
+    <form method="post" autocomplete=off>
     {% csrf_token %}
-    {{ form.as_p}}
-    <button type="submit">Entre</button>
-  </form>
+    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div class="card-body">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Nome</span>
+            </label>
+            {{ form.username|add_class:"input input-bordered"}}
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Palavra Passe</span>
+            </label>
+            {{ form.password|add_class:"input input-bordered"}}
+          </div>
+          <div class="form-control mt-6">
+            <button class="btn btn-primary">Entre</button>
+          </div>
+        </div>
+  </form>  
+  </div>
 {% endblock content %}
