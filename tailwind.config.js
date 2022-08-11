@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './templates/**/*.html'
+    './templates/**/*.html',
+    './node_modules/tw-elements/dist/js/**/*.js'
   ],
   theme: {
     extend: {},
@@ -9,5 +10,7 @@ module.exports = {
   plugins: [
     require("daisyui"),
     require("@tailwindcss/forms"),
+    require('tw-elements/dist/plugin'),
   ],
+
 }

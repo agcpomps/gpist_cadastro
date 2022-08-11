@@ -18,6 +18,13 @@
                {{ form.nome|add_class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" }}
              </div>
 
+             <div class="col-span-6">
+                <div class="datepicker relative form-floating mb-3 xl:w-96">
+                    {% render_field form.data_de_nascimento class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"%}
+                  <label for="id_data_de_nascimento" class="text-gray-700">Data de Nascimento</label>
+                </div>
+             </div>
+
              <div class="col-span-6 sm:col-span-3">
                <label for="id_bi" class="block text-sm font-medium text-gray-700">BI</label>
                {{ form.bi|add_class:"mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" }}
@@ -62,6 +69,11 @@
                       <p class="text-gray-500">Se o proprietário é fucionário público.</p>
                     </div>
                   </div>
+               </div>
+
+               <div class="col-span-6">
+                 <label for="id_nome" class="block text-sm font-medium text-gray-700">Escolhe a Habitação</label>
+                 {%render_field form.habitacao class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"%}
                </div>
 
 
