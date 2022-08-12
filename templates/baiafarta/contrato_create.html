@@ -1,0 +1,83 @@
+{% extends '_base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Preenche os dados do contrato{% endblock title %}
+
+class Contrato(models.Model):
+    numero_contrato = models.CharField(max_length=20)
+    class TipoRenda (models.TextChoices):
+        RESOLUVEL =  "RES", _("Resoluvel")
+        ARRENDAMENTO = "ARR", _("Arrendamento")
+
+    tipo_de_renda = models.CharField(
+        max_length=3,
+        choices=TipoRenda.choices,
+        default=TipoRenda.ARRENDAMENTO
+    )
+    inicio_de_contrato = models.DateField()
+    morador = models.OneToOneField(
+        Morador,
+        on_delete=models.CASCADE,
+        primary_key=True
+    )
+    habitacao = models.OneToOneField(
+        Habitacao,
+        on_delete=models.CASCADE,
+    )
+    def __str__(self) -> str:
+        return self.numero_contrato
+
+    def get_absolute_url(self):
+        return reverse("contrato_detail", kwargs={"pk": self.pk})
+    
+
+{% block content %}
+  <h1>Preeche os campos do contrato</h1>
+
+  <div class="flex justify-center items-center">
+    <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md">
+        <form>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="form-group mb-6">
+                {% render_field form.numero_contrato class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="numero do contrato" id="id_numero_contrato"%}
+            </div>
+            <div class="form-group mb-6">
+              {% render_field form.tipo_de_renda class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"%}
+            </div>
+          </div>
+          <div class="form-group mb-6">
+            <div class="datepicker relative form-floating mb-3 xl:w-96">
+                {% render_field form.inicio_de_contrato class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"%}
+              <label for="id_inicio_de_contrato" class="text-gray-700">Inicio de Contrato</label>
+            </div>
+          </div>
+          <div class="form-group mb-6">
+            <label for="id_nome" class="block text-sm font-medium text-gray-700">Escolhe a Habitação</label>
+            {% render_field form.habitacao class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"%}
+          </div>
+          <div class="form-group mb-6">
+            <label for="id_nome" class="block text-sm font-medium text-gray-700">Escolhe o Proprietário</label>
+            {% render_field form.morador class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"%}
+          </div>
+          
+          <button type="submit" class="
+            px-6
+            py-2.5
+            bg-blue-600
+            text-white
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            rounded
+            shadow-md
+            hover:bg-blue-700 hover:shadow-lg
+            focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+            active:bg-blue-800 active:shadow-lg
+            transition
+            duration-150
+            ease-in-out">Guardar</button>
+        </form>
+      </div>
+  </div>
+{% endblock content %}

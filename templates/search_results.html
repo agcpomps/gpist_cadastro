@@ -1,0 +1,58 @@
+{% extends '_base.html' %}
+
+{% block title %}Resultados da procura{% endblock title %}
+
+{% block content %}
+<h1>Lista das Habitções da Baía Farta</h1>
+<div class="py-2 bg-inherit text-right">
+  <a href="{% url 'habitacao_create' %}" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Novo</a>
+</div>
+<div class="overflow-x-auto">
+    <table class="table table-compact w-full">
+      <thead>
+          <tr>
+            <th></th> 
+            <th>Urbanização</th> 
+            <th>Bloco</th> 
+            <th>Rua</th> 
+            <th>Pŕedio</th> 
+            <th>Entrada</th> 
+            <th>Numero</th>
+            <th>Contrato</th>
+            <th>Tipo de renda</th>
+            <th>Proprietário</th>
+          </tr>
+        </thead>
+        <tbody>
+                {% for habitacao in habitacao_list %}
+                  <tr>
+                  <th>{{habitacao.id}}</th>
+                  <td>{{habitacao.urbanizacao}}</td>
+                  <td>{{habitacao.bloco}}</td>
+                  <td>{{habitacao.rua}}</td>
+                  <td>{{habitacao.predio}}</td>
+                  <td>{{habitacao.entrada}}</td>
+                  <td>{{habitacao.numero}}</td>
+                  <td>{{habitacao.contrato}}</td>
+                  <td>{{habitacao.contrato.tipo_de_renda}}</td>
+                  <td>{{habitacao.morador}}</td>
+                  </tr>
+                {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+              <th></th> 
+              <th>Urbanização</th> 
+              <th>Rua</th> 
+              <th>Bloco</th> 
+              <th>Pŕedio</th> 
+              <th>Entrada</th> 
+              <th>Numero</th> 
+              <th>Contrato</th>
+              <th>Tipo de renda</th>
+              <th>Proprietário</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+{% endblock content %}

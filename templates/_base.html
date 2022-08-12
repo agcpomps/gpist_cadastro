@@ -111,7 +111,7 @@
        <header class="bg-white shadow py-4 px-4">
          <!--search bar-->
          <div class="header-content flex items-center flex-row">
-           <form>
+           <form method="get" action="{% url 'search_results' %}">
              <div class="hidden md:flex relative">
                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                 <svg
@@ -130,10 +130,11 @@
                <input 
                  type="text"
                  id="search"
-                 name="search"
+                 name="q"
                  class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-300 w-full h-10 focus:outline-none focus:border-indigo-700"
                  placeholder="Procure pela habitação ou cidadão"
                  >
+                 
              </div>
            </form>
            <div class="flex ml-auto">
@@ -164,6 +165,6 @@
       </main>
     </div>
 
-    <script src="./node_modules/tw-elements/dist/js/index.min.js"></script>
+    <script src="{% static 'js/tw-elements/dist/js/index.min.js' %}"></script>
   </body>
 </html>

@@ -19,6 +19,7 @@
               <th>Entrada</th> 
               <th>Numero</th>
               <th>Contrato</th>
+              <th>Tipo de renda</th>
               <th>Proprietário</th>
             </tr>
           </thead>
@@ -33,6 +34,7 @@
                     <td>{{habitacao.entrada}}</td>
                     <td>{{habitacao.numero}}</td>
                     <td>{{habitacao.contrato}}</td>
+                    <td>{{habitacao.contrato.tipo_de_renda}}</td>
                     <td>{{habitacao.morador}}</td>
                     </tr>
                   {% endfor %}
@@ -47,6 +49,7 @@
                 <th>Entrada</th> 
                 <th>Numero</th> 
                 <th>Contrato</th>
+                <th>Tipo de renda</th>
                 <th>Proprietário</th>
               </tr>
           </tfoot>
