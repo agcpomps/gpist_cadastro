@@ -23,7 +23,9 @@ class MoradorCreateView(CreateView):
     template_name = "baiafarta/morador_create.html"
 
 class MoradorDetailView(DetailView):
-    pass
+   model = Morador
+   template_name = "baiafarta/morador_detail.html"
+   context_object_name = "morador"
 
 
 class ContratoView(ListView):
@@ -42,9 +44,10 @@ class SearchResultsView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get("q")
+        
         if query:
             return Habitacao.objects.filter(
                 Q(morador__nome__icontains=query) | Q(numero__icontains=query)
             )
-
+        return Habitacao.objects.all()
 

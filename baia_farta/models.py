@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -38,7 +39,8 @@ class Morador(models.Model):
     
     @property
     def idade(self):
-        pass
+        return int((datetime.now().date() - self.data_de_nascimento.days / 365.25))
+
     def __str__(self) -> str:
         return self.nome
 
